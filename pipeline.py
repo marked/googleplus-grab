@@ -74,6 +74,7 @@ with open('user-agents', 'r') as f:
     USER_AGENT = random.choice(f.read().splitlines()).strip()
 TRACKER_ID = 'googleplus'
 TRACKER_HOST = 'tracker.archiveteam.org'
+TRACKER_HOST_TARGETS = 'server5.kiska.pw:9080'
 
 
 ###########################################################################
@@ -306,7 +307,7 @@ project = Project(
 
 pipeline = Pipeline(
     CheckIP(),
-    GetItemFromTracker('http://%s/%s' % (TRACKER_HOST, TRACKER_ID), downloader,
+    GetItemFromTracker('http://%s/%s' % (TRACKER_HOST_TARGETS, TRACKER_ID), downloader,
         VERSION),
     PrepareDirectories(warc_prefix='googleplus'),
     WgetDownload(
